@@ -14,8 +14,8 @@ Ninguém abre terminal. O advogado cola mensagens no Claude Code e ele faz o res
 - Passo a passo em Word, para mandar ao pessoal: `Instalar skill trabalhista - passo a passo.docx`
 - Mesmo conteúdo em texto: [`INSTALAR-WINDOWS.md`](INSTALAR-WINDOWS.md)
 
-O repositório é privado. Na primeira instalação de cada máquina abre o login do GitHub,
-e quem digita é o implantador, na conta `ggvadv`.
+O repositório é **público**: o download não pede login. Por isso mesmo, **nada de dado de
+cliente aqui** — nem nome, nem CPF, nem número de processo. Só o método.
 
 ## Mudar o método
 

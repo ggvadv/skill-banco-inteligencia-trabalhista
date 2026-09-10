@@ -11,7 +11,7 @@ desconfia de tese fácil, refaz cálculo — sem você ter que explicar nada em 
 
 ---
 
-## Antes: três janelas que vão aparecer
+## Antes: duas janelas que vão aparecer
 
 Vão surgir caixas pedindo confirmação. Não tem susto nenhum, é assim mesmo:
 
@@ -19,8 +19,6 @@ Vão surgir caixas pedindo confirmação. Não tem susto nenhum, é assim mesmo:
    clique em **sim**, sempre.
 2. **Uma janela azul do Windows**, "Deseja permitir que este aplicativo faça alterações?"
    → **Sim**.
-3. **Uma janela do GitHub pedindo login** (só no passo 4) → aí você **para e chama quem
-   te mandou este roteiro**. A senha não é sua.
 
 ---
 
@@ -74,11 +72,7 @@ Cole:
 ```
 Dentro da pasta claude-skills que você acabou de criar, baixe este repositório usando
 git clone: https://github.com/ggvadv/skill-banco-inteligencia-trabalhista.git
-Se abrir alguma janela pedindo login do GitHub, pare e me avise.
 ```
-
-**Se abrir a janela de login do GitHub:** pare. Chame quem te mandou este roteiro — é ele
-quem tem a senha. Acontece só na primeira vez, em cada computador.
 
 **Acabou quando** ele disser que o download terminou.
 
@@ -154,7 +148,6 @@ Depois feche e abra o Claude Code. Sem isso, ele continua lendo a versão velha.
 | O que acontece | O que fazer |
 |---|---|
 | Você clicou "não" numa permissão | Cole a mensagem do passo de novo e clique em **sim** |
-| Abriu uma janela pedindo senha do GitHub | Pare. Chame quem te mandou o roteiro. A senha não é sua |
 | Ele diz que o `winget` não existe | Print da tela no grupo. A máquina precisa de atualização do Windows |
 | No passo 7 ele responde genérico | Feche o Claude Code por inteiro e abra de novo |
 | Ele diz que não achou o `SKILL.md` | Volte ao passo 4: o download não terminou |
@@ -169,5 +162,5 @@ Esta skill é independente e funciona sozinha. O banco de dossiês do escritóri
 repositório e identidade por advogado, descrita no `IMPLANTACAO-MAQUINA.md`. Advogado
 nenhum precisa fazer aquilo sozinho.
 
-O repositório `ggvadv/skill-banco-inteligencia-trabalhista` é privado: a janela de login do
-GitHub aparece uma vez por máquina e quem digita é o implantador, na conta `ggvadv`.
+O repositório `ggvadv/skill-banco-inteligencia-trabalhista` é público: o download não pede
+login. Não coloque nele nada de cliente — só o método.
