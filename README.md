@@ -4,24 +4,26 @@ Skill do Claude Code usada pela GGV Advogados na análise trabalhista pelo lado 
 reclamante: dossiês cumulativos por empresa, prova documental, cálculo, CCT/ACT,
 jurisprudência e defesa esperada.
 
-A skill inteira é o arquivo [`SKILL.md`](SKILL.md).
+A skill inteira é o arquivo [`SKILL.md`](SKILL.md). **Esta é a cópia oficial**: toda
+máquina do escritório baixa daqui, e toda mudança no método é feita aqui.
 
-## Instalar
+## Instalar (advogado)
 
-Windows: [`INSTALAR-WINDOWS.md`](INSTALAR-WINDOWS.md) — 6 passos, ~10 minutos, uma vez por máquina.
+Ninguém abre terminal. O advogado cola mensagens no Claude Code e ele faz o resto.
 
-Resumo, para quem já tem Git e Claude Code:
+- Passo a passo em Word, para mandar ao pessoal: `Instalar skill trabalhista - passo a passo.docx`
+- Mesmo conteúdo em texto: [`INSTALAR-WINDOWS.md`](INSTALAR-WINDOWS.md)
 
-```
-git clone https://github.com/ggvadv/skill-banco-inteligencia-trabalhista.git
-```
+O repositório é privado. Na primeira instalação de cada máquina abre o login do GitHub,
+e quem digita é o implantador, na conta `ggvadv`.
 
-Copie o `SKILL.md` para `~/.claude/skills/banco-inteligencia-trabalhista/SKILL.md`
-(no Windows, `C:\Users\seu-nome\.claude\skills\...`) e reinicie o Claude Code.
+## Mudar o método
 
-## Atualizar
+1. Edite o `SKILL.md` aqui e faça commit + push.
+2. Avise no grupo. Cada advogado cola a mensagem "Quando o método for atualizado" do
+   passo a passo e reinicia o Claude Code.
 
-`git pull`, copie por cima e reinicie o Claude Code. O `git pull` sozinho não muda a
-skill que o Claude lê.
+O `git pull` sozinho não muda a skill que o Claude lê — ele atualiza a cópia baixada,
+e a mensagem de atualização copia por cima da instalada.
 
 Uso interno.

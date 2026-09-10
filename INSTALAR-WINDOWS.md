@@ -1,207 +1,173 @@
-# Instalar a skill Banco de Inteligência Trabalhista — Windows
+# Instalar a skill Banco de Inteligência Trabalhista — passo a passo
 
-Para o advogado. Não precisa saber nada de programação: são seis passos, uns 10 minutos,
-e só se faz uma vez por computador.
+Seis passos. Uns 10 minutos. Uma vez só, no seu computador.
 
-**No fim disso, o Claude passa a raciocinar como parecerista trabalhista** — pede documento,
-desconfia de tese fácil, refaz cálculo — sem você precisar explicar nada em cada conversa.
+**Você não vai abrir terminal, não vai digitar comando, não vai instalar nada na mão.**
+Em cada passo você cola uma mensagem no Claude e ele faz o serviço. Você só clica em "sim"
+quando ele pedir permissão.
 
----
-
-## Antes de começar
-
-- **Claude Code instalado e com a conta do escritório logada.** Se ainda não estiver,
-  pare aqui e fale com o Dr. Glauco: a instalação do Claude Code é outro roteiro.
-- **Nada de senha na sua mão.** O download pede login do GitHub uma única vez, na conta
-  `ggvadv`. Quem digita é quem implanta, não você.
-- **Onde tudo acontece:** no PowerShell. Para abrir, tecla `Windows` → digite `powershell`
-  → `Enter`. Não precisa ser "como administrador".
+Depois disso, o Claude passa a raciocinar como parecerista trabalhista — pede documento,
+desconfia de tese fácil, refaz cálculo — sem você ter que explicar nada em cada conversa.
 
 ---
 
-## Passo 1 — Instalar o Git
+## Antes: três janelas que vão aparecer
 
-O Git é o programa que baixa a skill. Duas maneiras; a primeira é mais rápida.
+Vão surgir caixas pedindo confirmação. Não tem susto nenhum, é assim mesmo:
 
-**Jeito rápido.** No PowerShell:
-
-```
-winget install --id Git.Git -e --source winget
-```
-
-Se o Windows pedir confirmação, aceite. Ao terminar, **feche o PowerShell e abra de novo** —
-sem isso o Windows não enxerga o programa novo.
-
-**Jeito manual**, se o comando acima não existir na sua máquina:
-
-1. Abra `https://git-scm.com/download/win` e baixe o **64-bit Git for Windows Setup**.
-2. Execute o arquivo baixado e vá clicando **Next**. Os padrões estão certos.
-3. Duas telas merecem atenção:
-   - *"Choosing the default editor"* → troque o **Vim** por **Notepad**. O Vim trava gente
-     experiente; não vale o risco.
-   - *"Adjusting your PATH environment"* → mantenha a opção do **meio**, a recomendada
-     (*Git from the command line and also from 3rd-party software*). É ela que faz o
-     passo seguinte funcionar.
-4. **Finish**, feche o PowerShell e abra de novo.
-
-**Conferir:**
-
-```
-git --version
-```
-
-Tem de responder algo como `git version 2.47.1`. Qualquer número serve. Se disser que o
-comando não é reconhecido, veja *Problemas comuns* no fim.
+1. **O próprio Claude pedindo permissão** para mexer em arquivos ou instalar coisa →
+   clique em **sim**, sempre.
+2. **Uma janela azul do Windows**, "Deseja permitir que este aplicativo faça alterações?"
+   → **Sim**.
+3. **Uma janela do GitHub pedindo login** (só no passo 4) → aí você **para e chama quem
+   te mandou este roteiro**. A senha não é sua.
 
 ---
 
-## Passo 2 — Criar a pasta
+## Passo 1 — Abrir o Claude Code
 
-```
-cd $HOME
-```
+Abra o Claude Code normalmente, com a conta do escritório.
 
-```
-mkdir claude-skills
-```
-
-```
-cd claude-skills
-```
-
-`$HOME` é a sua pasta de usuário, `C:\Users\seu-nome`. A pasta fica em
-`C:\Users\seu-nome\claude-skills`.
-
-**Não use a Área de Trabalho.** Na maioria das máquinas do escritório ela está sincronizada
-com o OneDrive, e o OneDrive muda o caminho dos arquivos sozinho — o que quebra a
-atualização da skill meses depois, do nada.
-
-Se o `mkdir` reclamar que a pasta já existe, ignore e siga para o `cd`.
+Se ele perguntar qual pasta você quer abrir, escolha **Documentos**. Tanto faz qual seja —
+é só pra ele ter onde trabalhar.
 
 ---
 
-## Passo 3 — Baixar a skill
+## Passo 2 — Pedir pro Claude instalar o Git
+
+O Git é o programa que busca a skill. Provavelmente sua máquina não tem. Cole:
 
 ```
-git clone https://github.com/ggvadv/skill-banco-inteligencia-trabalhista.git
+Estou no Windows e não sei se tenho o Git instalado. Verifique, e se não tiver, instale
+pra mim usando o winget. Se o winget não funcionar, me diga em português simples o que eu
+preciso fazer. No final, confirme qual versão do Git ficou instalada.
 ```
 
-**Na primeira vez, e só nela, abre uma janela do GitHub pedindo login.** Escolha
-*Sign in with your browser* e entre com a conta `ggvadv`. O Windows guarda esse acesso;
-nas próximas vezes não pergunta mais.
+Pode demorar um ou dois minutos. Ele vai pedir permissão e o Windows também. Diga sim para
+os dois.
 
-**Conferir:**
-
-```
-dir .\skill-banco-inteligencia-trabalhista
-```
-
-Tem de aparecer o arquivo `SKILL.md`. Ele é a skill inteira — um arquivo de texto com o
-método de trabalho escrito por extenso.
-
-> **Não abra o `SKILL.md` no Word.** O Word reescreve aspas, acentos e quebra o cabeçalho
-> do arquivo, e a skill some da lista sem dar erro. Se quiser ler, abra no Bloco de Notas
-> — ou peça pro Claude te explicar.
+**Acabou quando** ele disser um número de versão, tipo `git version 2.47.1`.
 
 ---
 
-## Passo 4 — Pedir pro Claude instalar
+## Passo 3 — Pedir pro Claude criar a pasta
 
-1. Abra o **Claude Code**.
-2. Abra a pasta `C:\Users\seu-nome\claude-skills\skill-banco-inteligencia-trabalhista`.
-3. Cole exatamente este pedido:
+Cole:
 
 ```
-Instale a skill desta pasta como skill pessoal do Claude Code: crie a pasta
-.claude\skills\banco-inteligencia-trabalhista dentro do meu perfil de usuário e copie
-o SKILL.md daqui para lá, sem alterar uma vírgula do conteúdo. No final, me mostre o
-caminho completo do arquivo copiado.
+Crie uma pasta chamada claude-skills dentro da minha pasta de usuário do Windows, e me
+diga o caminho completo dela quando terminar.
 ```
 
-4. O Claude vai pedir permissão para rodar os comandos. Autorize.
+**Acabou quando** ele responder um caminho tipo `C:\Users\seu-nome\claude-skills`.
 
-**Conferir:** o caminho que ele mostrar no fim tem de ser, com o seu nome no lugar de
-`seu-nome`:
-
-```
-C:\Users\seu-nome\.claude\skills\banco-inteligencia-trabalhista\SKILL.md
-```
-
-Duas coisas nesse caminho não podem mudar: a pasta começa com **ponto** (`.claude`) e o
-arquivo se chama **SKILL.md**, em maiúsculas. Fora disso, o Claude não acha.
+> Repare que **não é** na Área de Trabalho. É de propósito: a Área de Trabalho aqui do
+> escritório é sincronizada com o OneDrive, e o OneDrive muda o lugar dos arquivos
+> sozinho — o que quebra a skill meses depois, do nada.
 
 ---
 
-## Passo 5 — Reiniciar o Claude Code
+## Passo 4 — Pedir pro Claude baixar a skill
 
-O Claude lê as skills **uma vez, ao abrir**. Enquanto você não reiniciar, ele não sabe que
-a skill existe — e esse é, de longe, o motivo número um de "não funcionou".
+Cole:
 
-Feche o Claude Code por inteiro (não só a janela ou a aba; se estiver no terminal, digite
-`/exit`). Abra de novo.
+```
+Dentro da pasta claude-skills que você acabou de criar, baixe este repositório usando
+git clone: https://github.com/ggvadv/skill-banco-inteligencia-trabalhista.git
+Se abrir alguma janela pedindo login do GitHub, pare e me avise.
+```
+
+**Se abrir a janela de login do GitHub:** pare. Chame quem te mandou este roteiro — é ele
+quem tem a senha. Acontece só na primeira vez, em cada computador.
+
+**Acabou quando** ele disser que o download terminou.
 
 ---
 
-## Passo 6 — Testar
+## Passo 5 — Pedir pro Claude instalar a skill
 
-Pergunte, na pasta que você quiser:
+Cole:
 
 ```
-Quais skills você tem disponíveis?
+Agora instale a skill: copie o arquivo SKILL.md que está dentro da pasta que você acabou
+de baixar para a minha pasta de skills pessoais do Claude Code, em
+.claude\skills\banco-inteligencia-trabalhista\SKILL.md, sem alterar uma vírgula do
+conteúdo. No final me diga se deu certo.
 ```
 
-`banco-inteligencia-trabalhista` tem de aparecer na resposta. Se não aparecer, o problema
-está no passo 4 ou no 5.
+**Acabou quando** ele disser que copiou.
 
-Agora o teste que vale: peça uma análise real.
+---
+
+## Passo 6 — Fechar o Claude Code e abrir de novo
+
+O Claude só enxerga uma skill nova na hora em que abre. Enquanto você não fechar e abrir,
+não adianta nada.
+
+Feche o programa **por inteiro**. Não é minimizar. Não é fechar a conversa. É fechar o
+Claude Code mesmo — e abrir de novo.
+
+Esse é, de longe, o motivo número um de "não funcionou".
+
+---
+
+## Passo 7 — Testar
+
+Cole:
 
 ```
 Vou analisar um processo trabalhista contra a Alpitel. Por onde a gente começa?
 ```
 
-**Certo:** ele pergunta quais documentos você tem, fala em cartão de ponto, holerite, CCT,
-avisa que trabalha como se não houvesse testemunha.
-**Errado:** ele responde genérico, tipo "posso ajudar a resumir o processo". Aí a skill não
-carregou — volte ao passo 5.
+**Deu certo:** ele pergunta quais documentos você tem, fala em cartão de ponto, holerite e
+CCT, e avisa que trabalha como se não houvesse testemunha.
+
+**Não deu:** ele responde genérico, tipo "posso ajudar a resumir o processo". Volte ao
+passo 6 — quase sempre é o Claude que não foi fechado direito.
 
 ---
 
-## Atualizar depois
+## Pronto
 
-Quando o método for revisado, cada máquina roda:
-
-```
-cd $HOME\claude-skills\skill-banco-inteligencia-trabalhista
-```
-
-```
-git pull
-```
-
-E repete os passos 4 e 5 — copiar por cima e reiniciar. O `git pull` sozinho não atualiza
-a skill: ele atualiza a cópia baixada, não a que o Claude lê.
+A skill é sua e funciona **em qualquer pasta**, em qualquer processo. Não precisa ligar,
+não precisa chamar por nome, não precisa nem lembrar dela: o Claude reconhece sozinho
+quando o assunto é trabalhista.
 
 ---
 
-## Problemas comuns
+## Quando o método for atualizado
 
-| O que aparece | Por quê | O que fazer |
-|---|---|---|
-| `git : O termo 'git' não é reconhecido` | O PowerShell foi aberto antes do Git terminar de instalar | Feche e abra o PowerShell. Se persistir, reinstale mantendo a opção do meio na tela do PATH |
-| `winget : O termo 'winget' não é reconhecido` | Windows desatualizado | Use o jeito manual do passo 1 |
-| O clone pede usuário e senha e recusa a senha | O GitHub não aceita mais senha de conta no terminal | Feche, rode o comando de novo e escolha *Sign in with your browser* |
-| `repository not found` | Está logado numa conta sem acesso ao repositório | Chame quem implantou: precisa entrar com a conta `ggvadv` |
-| A skill não aparece na lista | Não reiniciou o Claude Code | Passo 5. Se já reiniciou, confira o caminho do passo 4 letra por letra |
-| A skill aparece na lista mas o Claude ignora | O `SKILL.md` foi aberto e salvo no Word | Apague a pasta `.claude\skills\banco-inteligencia-trabalhista` e refaça os passos 4 e 5 |
-| O antivírus bloqueia a instalação do Git | Política da máquina | TI. Não contorne |
+Abra o Claude Code e cole:
+
+```
+Entre na pasta claude-skills\skill-banco-inteligencia-trabalhista, rode git pull para
+baixar a versão nova, e depois copie de novo o SKILL.md por cima da minha skill pessoal
+em .claude\skills\banco-inteligencia-trabalhista\SKILL.md.
+```
+
+Depois feche e abra o Claude Code. Sem isso, ele continua lendo a versão velha.
 
 ---
 
-## O que este roteiro **não** faz
+## Se travar
 
-Ele instala **só a skill de inteligência trabalhista**, que funciona em qualquer pasta e
-não depende de mais nada.
+| O que acontece | O que fazer |
+|---|---|
+| Você clicou "não" numa permissão | Cole a mensagem do passo de novo e clique em **sim** |
+| Abriu uma janela pedindo senha do GitHub | Pare. Chame quem te mandou o roteiro. A senha não é sua |
+| Ele diz que o `winget` não existe | Print da tela no grupo. A máquina precisa de atualização do Windows |
+| No passo 7 ele responde genérico | Feche o Claude Code por inteiro e abra de novo |
+| Ele diz que não achou o `SKILL.md` | Volte ao passo 4: o download não terminou |
+| Qualquer outra coisa | Print da tela **inteira** no grupo. Não fique tentando adivinhar |
 
-O banco de dossiês do escritório — `/modo-juridico`, `/estudo-empresa`, `/inicial`,
-`/replica` — é outra instalação, com repositório e identidade por advogado. O roteiro dela
-é o `IMPLANTACAO-MAQUINA.md`, neste mesmo repositório, e quem executa é o Dr. Glauco ou o TI.
+---
+
+## Nota para quem distribui (não é para o advogado)
+
+Esta skill é independente e funciona sozinha. O banco de dossiês do escritório —
+`/modo-juridico`, `/estudo-empresa`, `/inicial`, `/replica` — é outra instalação, com
+repositório e identidade por advogado, descrita no `IMPLANTACAO-MAQUINA.md`. Advogado
+nenhum precisa fazer aquilo sozinho.
+
+O repositório `ggvadv/skill-banco-inteligencia-trabalhista` é privado: a janela de login do
+GitHub aparece uma vez por máquina e quem digita é o implantador, na conta `ggvadv`.
